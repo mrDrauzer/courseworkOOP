@@ -66,7 +66,7 @@ def user_interaction():
         print(f"  Описание: {v.description[:120]}...\n")
 
     # Возможность удалить вакансию
-    to_delete = input("\nХотите удалить вакансию? Введите ID ( или Enter для пропуска): ").strip()
+    to_delete = input("\nХотите удалить вакансию? Введите ID (или Enter для пропуска): ").strip()
     if to_delete:
         all_vacs = json_saver.get_vacancies()
         found = next((v for v in all_vacs if v.get("id") == to_delete), None)
