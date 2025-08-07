@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "courseworkoop"
+version = "0.1.0"
+description = ""
+authors = ["drauzer89 <drauzer89@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.4"
+pandas = "^2.3.1"
+openpyxl = "^3.1.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 79
+target-version = ["py38"]
