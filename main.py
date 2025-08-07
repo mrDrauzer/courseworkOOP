@@ -1,6 +1,6 @@
 from SRC.hh_api import HeadHunterAPI
-from vacancy import Vacancy
-from json_saver import JSONSaver
+from SRC.vacancy import Vacancy
+from SRC.json_saver import JSONSaver
 
 def user_interaction():
     hh_api = HeadHunterAPI()

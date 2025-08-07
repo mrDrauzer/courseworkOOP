@@ -1,15 +1,26 @@
 from typing import Optional, Dict
 
+
 class Vacancy:
     """
     Класс вакансии с поддержкой сравнения, валидацией и удобством для хранения.
     """
 
     __slots__ = (
-        "id", "title", "link", "company", "area",
-        "salary_from", "salary_to", "salary_currency",
-        "description", "published_at", "snippet_requirement",
-        "snippet_responsibility", "experience", "employment"
+        "id",
+        "title",
+        "link",
+        "company",
+        "area",
+        "salary_from",
+        "salary_to",
+        "salary_currency",
+        "description",
+        "published_at",
+        "snippet_requirement",
+        "snippet_responsibility",
+        "experience",
+        "employment",
     )
 
     def __init__(
@@ -27,7 +38,7 @@ class Vacancy:
         snippet_requirement: Optional[str] = "",
         snippet_responsibility: Optional[str] = "",
         experience: Optional[str] = "",
-        employment: Optional[str] = ""
+        employment: Optional[str] = "",
     ):
         self.id = id
         self.title = title
@@ -50,7 +61,8 @@ class Vacancy:
         return int(value)
 
     def get_avg_salary(self) -> int:
-        """Возвращает среднюю зарплату по вакансии, если две границы, иначе одну."""
+        """Возвращает среднюю зарплату по вакансии,
+         если две границы, иначе одну."""
         if self.salary_from and self.salary_to:
             return (self.salary_from + self.salary_to) // 2
         return self.salary_from or self.salary_to or 0
@@ -73,8 +85,10 @@ class Vacancy:
 
     def __repr__(self):
         salary = self.get_avg_salary()
-        return (f"Vacancy('{self.title}', компания: {self.company}, регион: {self.area}, "
-                f"зарплата: {salary} {self.salary_currency}, ссылка: {self.link})")
+        return (
+            f"Vacancy('{self.title}', компания: {self.company}, регион: {self.area}, "
+            f"зарплата: {salary} {self.salary_currency}, ссылка: {self.link})"
+        )
 
     def to_dict(self) -> dict:
         """Преобразует Vacancy в словарь (для json хранилища)."""
@@ -92,7 +106,7 @@ class Vacancy:
             "snippet_requirement": self.snippet_requirement,
             "snippet_responsibility": self.snippet_responsibility,
             "experience": self.experience,
-            "employment": self.employment
+            "employment": self.employment,
         }
 
     @classmethod
@@ -112,5 +126,5 @@ class Vacancy:
             snippet_requirement=data.get("snippet_requirement", ""),
             snippet_responsibility=data.get("snippet_responsibility", ""),
             experience=data.get("experience", ""),
-            employment=data.get("employment", "")
+            employment=data.get("employment", ""),
         )

@@ -3,6 +3,7 @@ import os
 from typing import List, Dict, Optional
 from SRC.file_connector import FileSaver
 
+
 class JSONSaver(FileSaver):
     """
     Класс для хранения вакансий в JSON-файле.
@@ -25,7 +26,7 @@ class JSONSaver(FileSaver):
         if not os.path.exists(self.__filename):
             return []
 
-        with open(self.__filename, encoding='utf-8') as f:
+        with open(self.__filename, encoding="utf-8") as f:
             try:
                 vacancies = json.load(f)
             except Exception:
@@ -34,7 +35,11 @@ class JSONSaver(FileSaver):
         if criteria:
             # Пример простой фильтрации по ключу и значению
             key, value = list(criteria.items())[0]
-            return [v for v in vacancies if value.lower() in str(v.get(key, "")).lower()]
+            return [
+                v
+                for v in vacancies
+                if value.lower() in str(v.get(key, "")).lower()
+            ]
         return vacancies
 
     def delete_vacancy(self, vacancy: Dict) -> None:
